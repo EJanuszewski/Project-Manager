@@ -2,10 +2,16 @@
 
 angular.module('projectManagerApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
-    $scope.menu = [{
-      'title': 'Home',
-      'link': '/'
-    }];
+    $scope.menu = [
+        {
+            'title': 'Home',
+            'link': '/'
+        },
+        {
+            'title': 'Projects',
+            'link': '/projects'
+        }
+    ];
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
