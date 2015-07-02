@@ -4,6 +4,7 @@ describe('Controller: ProjectCtrl', function () {
 
   // load the controller's module
   beforeEach(module('projectManagerApp'));
+  beforeEach(module('socketMock'));
 
   var ProjectCtrl, scope;
 

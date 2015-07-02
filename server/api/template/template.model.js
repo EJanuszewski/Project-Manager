@@ -8,9 +8,9 @@ var TemplateSchema = new Schema({
   projectId: String,
   active: Boolean,
   url: String,
-  complete: Boolean,
-  respTablet: Boolean,
-  respMobile: Boolean
+  complete: { type: String, default: 'No' },
+  respTablet: { type: String, default: 'No' },
+  respMobile: { type: String, default: 'No' }
 });
 
 module.exports = mongoose.model('Template', TemplateSchema);

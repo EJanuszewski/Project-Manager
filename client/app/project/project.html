@@ -19,7 +19,7 @@
           </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="template in project.templates" ng-class="template.complete == true ? 'success' : ''">
+        <tr ng-repeat="template in project.templates" ng-class="template.complete === 'Yes' ? 'success' : ''">
             <td>{{template.name}}</td>
             <td>{{template.url}}</td>
             <td>{{template.complete}}</td>
