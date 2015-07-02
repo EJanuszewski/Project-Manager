@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
 
 var TemplateSchema = new Schema({
   name: String,
-  info: String,
+  projectId: String,
   active: Boolean
 });
 

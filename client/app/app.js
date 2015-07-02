@@ -10,11 +10,6 @@ angular.module('projectManagerApp', [
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
-      .when('/Projects', {
-        templateUrl: 'app/projects/projects.html',
-        controller: 'ProjectsCtrl',
-        caseInsensitiveMatch: true
-      })
       .otherwise({
         redirectTo: '/'
       });

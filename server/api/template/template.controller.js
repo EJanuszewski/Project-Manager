@@ -11,6 +11,14 @@ exports.index = function(req, res) {
   });
 };
 
+// Get list of templates by project id
+exports.projectIndex = function(req, res) {
+  Template.find({ projectId: req.params.id }, function (err, templates) {
+    if(err) { return handleError(res, err); }
+    return res.json(200, templates);
+  });
+};
+
 // Get a single template
 exports.show = function(req, res) {
   Template.findById(req.params.id, function (err, template) {
