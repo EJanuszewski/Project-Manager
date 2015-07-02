@@ -13,11 +13,11 @@ angular.module('projectManagerApp')
     });
 
     $scope.addTemplate = function() {
-      if($scope.addTemplate === '') {
+      if($scope.newTemplate === '') {
         return;
       }
-      $http.post('/api/templates', { projectId: $scope.project._id, name: $scope.addTemplate });
-      $scope.addTemplate = '';
+      $http.post('/api/templates', { projectId: $scope.project._id, name: $scope.newTemplate });
+      $scope.newTemplate = '';
     };
   
   });
