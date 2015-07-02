@@ -5,12 +5,15 @@ angular.module('projectManagerApp')
     $http.get('/api/projects/' + $routeParams.id).success(function(project) {
       $scope.project = project;
       socket.syncUpdates('project', $scope.project);
+      getTemplates();
     });
 
-    $http.get('/api/templates/project/' + $routeParams.id).success(function(templates) {
-      $scope.templates = templates;
-      socket.syncUpdates('templates', $scope.templates);
-    });
+    var getTemplates = function() {
+      $http.get('/api/templates/project/' + $routeParams.id).success(function(templates) {
+        $scope.project.templates = templates;
+        socket.syncUpdates('templates', $scope.templates);
+      });
+    };
 
     $scope.addTemplate = function() {
       if($scope.newTemplate === '') {
@@ -18,6 +21,7 @@ angular.module('projectManagerApp')
       }
       $http.post('/api/templates', { projectId: $scope.project._id, name: $scope.newTemplate });
       $scope.newTemplate = '';
+      getTemplates();
     };
   
   });

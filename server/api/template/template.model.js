@@ -6,7 +6,11 @@ var mongoose = require('mongoose'),
 var TemplateSchema = new Schema({
   name: String,
   projectId: String,
-  active: Boolean
+  active: Boolean,
+  url: String,
+  complete: Boolean,
+  respTablet: Boolean,
+  respMobile: Boolean
 });
 
 module.exports = mongoose.model('Template', TemplateSchema);

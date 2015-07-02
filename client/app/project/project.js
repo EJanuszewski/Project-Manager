@@ -7,5 +7,5 @@ angular.module('projectManagerApp')
         templateUrl: 'app/project/project.html',
         controller: 'ProjectCtrl',
         caseInsensitiveMatch: true
-      })
+      });
   });

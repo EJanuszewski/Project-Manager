@@ -8,9 +8,26 @@
   <div class="row">
     <div class="col-lg-12">
       <h1 class="page-header">{{project.name}}</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="project in projects">
-        <li><a href="/project/{{project._id}}" tooltip="{{project.name}}">{{project.name}}<button type="button" class="close" ng-click="deleteProject(project.name, project)">&times;</button></a></li>
-      </ul>
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>URL</th>
+            <th>Complete</th>
+            <th>Tablet Responsive</th>
+            <th>Mobile Responsive</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="template in project.templates" ng-class="template.complete == true ? 'success' : ''">
+            <td>{{template.name}}</td>
+            <td>{{template.url}}</td>
+            <td>{{template.complete}}</td>
+            <td>{{template.respTablet}}</td>
+            <td>{{template.respMobile}}</td>
+        </tr>
+       </tbody>
+      </table>
     </div>
   </div>
   
