@@ -21,13 +21,14 @@
         </thead>
         <tbody>
         <tr ng-repeat="template in project.templates" ng-class="getStatus(template)">
-            <td><input ng-model="template.name" type="text" ng-blur="updateTemplate(template)" /></td>
-            <td><input ng-model="template.url" type="text" ng-blur="updateTemplate(template)" /></a></td>
+
+            <td><editable type='text'  value='template.name' on-edit="updateTemplate(template)" ></editable></td>
+            <td><editable type='text'  value='template.url' on-edit="updateTemplate(template)" ></td>
             <td><input type="checkbox" ng-model="template.complete" ng-change="updateTemplate(template)" /></td>
             <td><input type="checkbox" ng-model="template.respTablet" ng-change="updateTemplate(template)" /></td>
             <td><input type="checkbox" ng-model="template.respMobile" ng-change="updateTemplate(template)" /></td>
             <td>
-              <a class="btn btn-primary btn-xs" href="#" ng-click="toggle"><i class="fa fa-pencil fa-lg"></i> Edit</a>
+              <!-- <a class="btn btn-primary btn-xs" href="#" ng-click="toggle"><i class="fa fa-pencil fa-lg"></i> Edit</a> -->
               <a class="btn btn-danger btn-xs" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a>
             </td>
         </tr>

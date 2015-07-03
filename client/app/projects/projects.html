@@ -10,6 +10,9 @@
       <h1 class="page-header">Projects</h1>
       <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="project in projects">
         <li><a href="/project/{{project._id}}" tooltip="{{project.name}}">{{project.name}}<button type="button" class="close" ng-click="deleteProject(project.name, project)">&times;</button></a></li>
+
+        
+        
       </ul>
     </div>
   </div>
