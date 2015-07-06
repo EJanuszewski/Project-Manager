@@ -2,6 +2,7 @@
 
 angular.module('projectManagerApp')
   .controller('ProjectsCtrl', function ($scope, $http, socket, Modal) {
+  
     $scope.projects = [];
 
     $http.get('/api/projects').success(function(projects) {
@@ -24,4 +25,5 @@ angular.module('projectManagerApp')
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('project');
     });
+  
   });

@@ -29,7 +29,7 @@
             <td><input type="checkbox" ng-model="template.respMobile" ng-change="updateTemplate(template)" /></td>
             <td>
               <!-- <a class="btn btn-primary btn-xs" href="#" ng-click="toggle"><i class="fa fa-pencil fa-lg"></i> Edit</a> -->
-              <a class="btn btn-danger btn-xs" href="#"><i class="fa fa-trash-o fa-lg"></i> Delete</a>
+              <button class="btn btn-danger btn-xs" ng-click="deleteTemplate(template.name, template)"><i class="fa fa-trash-o fa-lg"></i> Delete</button>
             </td>
         </tr>
        </tbody>

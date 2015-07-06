@@ -1,7 +1,10 @@
 'use strict';
 
 angular.module('projectManagerApp')
-  .controller('ProjectCtrl', function ($scope, $http, $routeParams, socket) {
+  .controller('ProjectCtrl', function ($scope, $http, $routeParams, socket, Modal) {
+  
+    $scope.templates = [];
+  
     $http.get('/api/projects/' + $routeParams.id).success(function(project) {
       $scope.project = project;
       socket.syncUpdates('project', $scope.project);
@@ -24,6 +27,11 @@ angular.module('projectManagerApp')
     $scope.getStatus = function(template) {
       return template.complete === true ? 'success' : '';
     };
+
+    $scope.deleteTemplate = Modal.confirm.delete(function(templateName, template) {
+      $http.delete('/api/templates/' + template._id);
+      socket.syncUpdates('templates', $scope.templates);
+    });
 
     var getTemplates = function() {
       $http.get('/api/templates/project/' + $routeParams.id).success(function(templates) {
