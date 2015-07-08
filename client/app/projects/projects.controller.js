@@ -18,8 +18,8 @@ angular.module('projectManagerApp')
       $scope.newProject = '';
     };
 
-    $scope.deleteProject = Modal.confirm.delete(function(projectName, project) {
-      $http.delete('/api/projects/' + project._id);        
+    $scope.deleteProject = Modal.confirm.delete(function(project) {
+      $http.delete('/api/projects/' + project._id);
     });
     
     $scope.$on('$destroy', function () {

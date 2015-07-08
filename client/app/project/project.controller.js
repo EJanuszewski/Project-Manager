@@ -12,11 +12,9 @@ angular.module('projectManagerApp')
     });
 
     $scope.addTemplate = function(valid) {
-      console.log(valid);
       if(valid === true) {
         $http.post('/api/templates', { projectId: $scope.project._id, name: $scope.newTemplate });
         $scope.newTemplate = '';
-        getTemplates();
       }
     };
   
@@ -28,15 +26,14 @@ angular.module('projectManagerApp')
       return template.complete === true ? 'success' : '';
     };
 
-    $scope.deleteTemplate = Modal.confirm.delete(function(templateName, template) {
+    $scope.deleteTemplate = Modal.confirm.delete(function(template) {
       $http.delete('/api/templates/' + template._id);
-      socket.syncUpdates('templates', $scope.templates);
     });
 
     var getTemplates = function() {
       $http.get('/api/templates/project/' + $routeParams.id).success(function(templates) {
         $scope.project.templates = templates;
-        socket.syncUpdates('templates', $scope.templates);
+      	socket.syncUpdates('template', $scope.project.templates);
       });
     };
   
