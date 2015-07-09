@@ -1,4 +1,3 @@
-<div class='ng-editable'>
-<label ng-show="readOnly">{{value}}</label>
-<input ng-show="!readOnly" type={{type}} ng-blur="save()" ng-model = "value"/>
-<a class="btn btn-primary btn-xs" href="#" ng-click="switch()"><i class="fa fa-pencil fa-lg"></i></a></div>
+<div class="ng-editable">
+	<input type="{{type}}" ng-blur="switch()" ng-model="value" ng-readonly="readOnly" ng-dblclick="switch()" />
+</div>

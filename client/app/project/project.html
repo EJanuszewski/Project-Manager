@@ -22,13 +22,22 @@
         <tbody>
         <tr ng-repeat="template in project.templates" ng-class="getStatus(template)">
 
-            <td><editable type='text'  value='template.name' on-edit="updateTemplate(template)" ></editable></td>
-            <td><editable type='text'  value='template.url' on-edit="updateTemplate(template)" ></td>
+            <td><editable type='text'  value='template.name' on-edit="updateTemplate(template)" /></td>
+            <td><editable type='text'  value='template.url' on-edit="updateTemplate(template)" /></td>
             <td><input type="checkbox" ng-model="template.complete" ng-change="updateTemplate(template)" /></td>
             <td><input type="checkbox" ng-model="template.respTablet" ng-change="updateTemplate(template)" /></td>
             <td><input type="checkbox" ng-model="template.respMobile" ng-change="updateTemplate(template)" /></td>
             <td>
               <!-- <a class="btn btn-primary btn-xs" href="#" ng-click="toggle"><i class="fa fa-pencil fa-lg"></i> Edit</a> -->
+              <div ng-app="fileUpload">
+									watching model:
+									<div class="button" ngf-select ng-model="files">Upload using model $watch</div>
+									<div class="button" ngf-select ngf-change="upload($files)">Upload on file change</div>
+									Drop File:
+									<div ngf-drop ng-model="files" class="drop-box" 
+											ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"
+											ngf-accept="'image/*,application/pdf'">Drop Images or PDFs files here</div>
+							</div>
               <button class="btn btn-danger btn-xs" ng-click="deleteTemplate(template.name, template)"><i class="fa fa-trash-o fa-lg"></i> Delete</button>
             </td>
         </tr>
