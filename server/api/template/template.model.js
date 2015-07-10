@@ -8,6 +8,7 @@ var TemplateSchema = new Schema({
   projectId: String,
   active: Boolean,
   url: String,
+  templateFile: String,
   complete: { type: Boolean, default: false },
   respTablet: { type: Boolean, default: false },
   respMobile: { type: Boolean, default: false }

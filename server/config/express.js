@@ -29,7 +29,14 @@ module.exports = function(app) {
   app.use(methodOverride());
   app.use(cookieParser());
   app.use(passport.initialize());
-  app.use(multer({ dest: './uploads/'}));
+  app.use(multer(
+		{
+			dest: './uploads/',
+			rename: function (fieldname, filename, req, res) {
+				return req.body.templateName + '_' + filename
+			}
+		}
+	));
   if ('production' === env) {
     app.use(favicon(path.join(config.root, 'public', 'favicon.ico')));
     app.use(express.static(path.join(config.root, 'public')));

@@ -36,6 +36,20 @@ exports.create = function(req, res) {
   });
 };
 
+// Updates an existing template in the DB and sets the file name
+exports.upload = function(req, res) {
+  if(req.body._id) { delete req.body._id; }
+  Template.findById(req.params.id, function (err, template) {
+    if (err) { return handleError(res, err); }
+    if(!template) { return res.send(404); }
+    var updated = _.merge(template, req.body);
+    updated.save(function (err) {
+      if (err) { return handleError(res, err); }
+      return res.json(200, template);
+    });
+  });
+};
+
 // Updates an existing template in the DB.
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
