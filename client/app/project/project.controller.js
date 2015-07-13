@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('projectManagerApp')
-  .controller('ProjectCtrl', function ($scope, $http, $routeParams, socket, Modal, Upload) {
+  .controller('ProjectCtrl', function ($scope, $http, $routeParams, socket, Modal, Upload, Auth) {
   
     $scope.templates = [];
   
@@ -10,11 +10,17 @@ angular.module('projectManagerApp')
       socket.syncUpdates('project', $scope.project);
       getTemplates();
     });
+	
+    $http.get('/api/logs/project/' + $routeParams.id).success(function(logs) {
+      $scope.logs = logs;
+      socket.syncUpdates('log', $scope.logs);
+    });
 
     $scope.addTemplate = function(valid) {
       if(valid === true) {
         $http.post('/api/templates', { projectId: $scope.project._id, name: $scope.newTemplate });
         $scope.newTemplate = '';
+			$http.post('/api/logs', {itemPageId: $routeParams.id, itemObjectType: 'project', itemType: 'template', action: 'added', user: Auth.getCurrentUser()._id});
       }
     };
   
@@ -28,6 +34,7 @@ angular.module('projectManagerApp')
 
     $scope.deleteTemplate = Modal.confirm.delete(function(template) {
       $http.delete('/api/templates/' + template._id);
+			$http.post('/api/logs', {itemPageId: $routeParams.id, itemObjectType: 'project', itemType: 'template', action: 'deleted', user: Auth.getCurrentUser()._id});
     });
   
     $scope.$watch('files', function () {
