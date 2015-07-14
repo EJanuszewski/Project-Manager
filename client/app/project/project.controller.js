@@ -19,8 +19,8 @@ angular.module('projectManagerApp')
     $scope.addTemplate = function(valid) {
       if(valid === true) {
         $http.post('/api/templates', { projectId: $scope.project._id, name: $scope.newTemplate });
-        $scope.newTemplate = '';
-			$http.post('/api/logs', {itemPageId: $routeParams.id, itemObjectType: 'project', itemType: 'template', action: 'added', user: Auth.getCurrentUser()._id});
+				$http.post('/api/logs', {itemPageId: $routeParams.id, itemObjectType: 'project', itemType: 'template', action: 'added', user: Auth.getCurrentUser()._id, userName: Auth.getCurrentUser().name, actionValue: $scope.newTemplate});
+				$scope.newTemplate = '';
       }
     };
   
@@ -34,7 +34,7 @@ angular.module('projectManagerApp')
 
     $scope.deleteTemplate = Modal.confirm.delete(function(template) {
       $http.delete('/api/templates/' + template._id);
-			$http.post('/api/logs', {itemPageId: $routeParams.id, itemObjectType: 'project', itemType: 'template', action: 'deleted', user: Auth.getCurrentUser()._id});
+			$http.post('/api/logs', {itemPageId: $routeParams.id, itemObjectType: 'project', itemType: 'template', action: 'deleted', user: Auth.getCurrentUser()._id, userName: Auth.getCurrentUser().name, actionValue: template.name});
     });
   
     $scope.$watch('files', function () {

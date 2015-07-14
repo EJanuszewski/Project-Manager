@@ -3,8 +3,8 @@
     <div class="col-lg-12">
       <h1 class="page-header">{{project.name}}</h1>
       <ul class="list-group">
-      	<li class="list-group-item" ng-repeat="log in logs">
-					{{log.user}} {{log.action}} a {{log.itemType}}
+      	<li class="list-group-item" ng-repeat="log in logs" ng-class="{'list-group-item-success': log.action == 'added', 'list-group-item-danger': log.action == 'deleted'}">
+					{{log.userName}} {{log.action}} a {{log.itemType}} ({{log.actionValue}})
       	</li>
       </ul>
       <table class="table table-bordered">

@@ -8,8 +8,10 @@ var LogSchema = new Schema({
 	itemObjectType: String,
   itemType: String,
 	action: {type: String, default: 'added', enum: ['added', 'deleted']},
+	actionValue: String,
 	date: { type: Date, default: Date.now },
   user: { type: Schema.Types.ObjectId, ref: 'User' },
+  userName: String,
   active: Boolean
 });
 
