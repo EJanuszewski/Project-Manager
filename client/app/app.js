@@ -47,9 +47,9 @@ angular.module('projectManagerApp', [
 
   .run(function ($rootScope, $location, Auth) {
     // Redirect to login if route requires auth and you're not logged in
-    $rootScope.$on('$routeChangeStart', function (event, next) {
+    $rootScope.$on('$routeChangeStart', function () {
       Auth.isLoggedInAsync(function(loggedIn) {
-        if (next.authenticate && !loggedIn) {
+        if (!loggedIn) {
           $location.path('/login');
         }
       });
